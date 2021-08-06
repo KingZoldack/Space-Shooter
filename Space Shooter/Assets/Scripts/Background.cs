@@ -5,9 +5,11 @@ using UnityEngine;
 public class Background : MonoBehaviour
 {
     [SerializeField] float _speed = 3.5f;
+
     // Start is called before the first frame update
     void Start()
     {
+
         
     }
 
@@ -15,26 +17,21 @@ public class Background : MonoBehaviour
     void Update()
     {
 
-        StartCoroutine(StartScrollRoutine());
+        transform.Translate(Vector3.down * _speed * Time.deltaTime);
 
+        if (transform.position.y <= -13.67f)
+        {
+            Vector3 spawnPos = new Vector3(transform.position.x, 13.67f, 2);
+
+            transform.position = spawnPos;
+
+        }
         //if (transform.position.y >= 14f)
         //{
         //    transform.position = new Vector3(transform.position.x, -14f, 0);
         //}
     }
 
-    IEnumerator StartScrollRoutine()
-    {
-        transform.Translate(Vector3.up * _speed * Time.deltaTime);
-
-        for (; ;)
-        {
-            if (transform.position.y >= 14f)
-            {
-                transform.position = new Vector3(transform.position.x, -14f, 0);
-            }
-        }
-    }
 }
 
 

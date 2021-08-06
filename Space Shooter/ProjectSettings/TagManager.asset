@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Enemy_Laser
   - Laser
+  - Background
+  - Background_Inverted
   layers:
   - Default
   - TransparentFX
