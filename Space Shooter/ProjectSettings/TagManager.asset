@@ -4,12 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Platform
-  - icicle
-  - Coins
   - Power-Up
-  - Skins
-  - TopSpikes
+  - Enemy
+  - Enemy_Laser
+  - Laser
   layers:
   - Default
   - TransparentFX
@@ -46,4 +44,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2750655133
+    locked: 0
+  - name: Foreground
+    uniqueID: 3621725035
     locked: 0

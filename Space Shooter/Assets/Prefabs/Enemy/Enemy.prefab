@@ -48,11 +48,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9defa009db5f27f4f92df39e72f031c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionAnimation: {fileID: 3809256869133429374, guid: de977be2e3aeb5a4d9ed5fd5c9eef4c7, type: 3}
+  explosionAnimation: {fileID: 3809256869133429374, guid: de977be2e3aeb5a4d9ed5fd5c9eef4c7,
+    type: 3}
   _explosionSound: {fileID: 8300000, guid: a885c043fab7e46438bba03ba9dab6bc, type: 3}
   _enemyLaserSound: {fileID: 8300000, guid: 593da8461e47cbd4a990c8e0d9d5df15, type: 3}
   _speed: 4
-  _enemyLaserPrefab: {fileID: 6770268340315787542, guid: 10ccee8dfbdd7be48b54e416e847375a, type: 3}
+  _enemyLaserPrefab: {fileID: 6770268340315787542, guid: 10ccee8dfbdd7be48b54e416e847375a,
+    type: 3}
   _fireRate: 10
 --- !u!212 &6825252440757685831
 SpriteRenderer:
@@ -91,7 +93,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1201537721
+  m_SortingLayerID: -673242261
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3154912113cbb4a498df6f571c74e18c, type: 3}
