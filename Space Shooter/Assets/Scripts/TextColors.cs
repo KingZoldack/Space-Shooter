@@ -6,20 +6,29 @@ using TMPro;
 public class TextColors : MonoBehaviour
 {
     [SerializeField ]TextMeshProUGUI _colorText;
+    SceneManagement _sceneManagement;
+
     bool changeColor = false;
 
     // Start is called before the first frame update
     void Start()
     {
+
         _colorText = gameObject.GetComponent<TextMeshProUGUI>();
         changeColor = true;
-        StartCoroutine(ChangeColorRoutine());
+
+        //Coroutine will start if the active scene is single player main menu
+        if (_sceneManagement.currentSceneIndex == 0)
+        {
+            StartCoroutine(ChangeColorRoutine());
+        }
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        _sceneManagement = FindObjectOfType<SceneManagement>();
     }
 
     IEnumerator ChangeColorRoutine()

@@ -660,6 +660,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3290213739176798429, guid: f3990b1f572e43d46abd7627d218b401,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 23.56
+      objectReference: {fileID: 0}
     - target: {fileID: 5312850059139437290, guid: f3990b1f572e43d46abd7627d218b401,
         type: 3}
       propertyPath: m_RootOrder
@@ -948,6 +953,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7842289312215961624, guid: bf0d839ace0eb824a8d12ce813a1d1d7,
         type: 3}
+      propertyPath: InitialModule.startRotation.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7842289312215961624, guid: bf0d839ace0eb824a8d12ce813a1d1d7,
+        type: 3}
       propertyPath: InitialModule.startSize.minMaxState
       value: 0
       objectReference: {fileID: 0}
@@ -967,6 +977,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 00e98014132029149a8af6558cb303b9,
         type: 3}
+    - target: {fileID: 7842289312215961624, guid: bf0d839ace0eb824a8d12ce813a1d1d7,
+        type: 3}
+      propertyPath: InitialModule.startRotation.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7842289312215961624, guid: bf0d839ace0eb824a8d12ce813a1d1d7,
+        type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7842289312215961624, guid: bf0d839ace0eb824a8d12ce813a1d1d7,
+        type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7842289312215961625, guid: bf0d839ace0eb824a8d12ce813a1d1d7,
         type: 3}
       propertyPath: m_RootOrder
@@ -1109,6 +1134,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Asteroid
+      objectReference: {fileID: 0}
+    - target: {fileID: 8966643695678034489, guid: d76d9dc9736f793438d27f7275db9ca4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8966643695678034626, guid: d76d9dc9736f793438d27f7275db9ca4,
         type: 3}

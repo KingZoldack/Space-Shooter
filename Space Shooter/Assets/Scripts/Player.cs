@@ -28,11 +28,12 @@ public class Player : MonoBehaviour
     public int score = 0;
     [SerializeField] int pointsPerKill = 10;
 
-    [SerializeField] AudioClip _laserSound;
+    //[SerializeField] AudioClip _laserSound;
     [SerializeField] AudioClip _powerupSound;
     [SerializeField] AudioClip _engineDamaged;
     [SerializeField] AudioClip _explosionSound;
     AudioSource _audioSource;
+    AudioManager _audioManager;
 
     [SerializeField]
     Animator explosionAnimation;
@@ -43,12 +44,18 @@ public class Player : MonoBehaviour
     GameObject _explosionPrefab;
 
     UIManager uiManager;
+    AudioSource audioManagerAudio;
+
     // Start is called before the first frame update
     void Start()
     {
         uiManager = FindObjectOfType<UIManager>();
         _audioSource = GetComponent<AudioSource>();
-        _audioSource.clip = _laserSound;
+        _audioManager = FindObjectOfType<AudioManager>();
+        //audioManagerAudio.clip = 
+         audioManagerAudio = _audioManager.GetComponent<AudioSource>();
+
+       // _audioSource.clip = _audioManager.laserSound;
 
         sapwnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManger>();
         if (sapwnManager == null)
@@ -95,7 +102,8 @@ public class Player : MonoBehaviour
             Instantiate(_laserPrefab, transform.position + laserOffset, Quaternion.identity);
         }
 
-        _audioSource.Play();
+       // _audioSource.Play();
+        audioManagerAudio.PlayOneShot(_audioManager.laserSound, _audioManager.laserSoundVolume);
     }
 
     void CalculateMovement()
@@ -152,7 +160,7 @@ public class Player : MonoBehaviour
             _rightEngineDamged.SetActive(true);
             _audioSource.PlayOneShot(_engineDamaged);
         }
-
+        
         else if (_lives == 1)
         {
             _leftEngineDamaged.SetActive(true);

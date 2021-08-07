@@ -37,7 +37,7 @@ public class SpawnManger : MonoBehaviour
     
     IEnumerator SpawnPowerupRoutine()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(10.0f);
         while (_stopSpawning == false)
         {
             //Debug.Log(_player.randomPowerup);
