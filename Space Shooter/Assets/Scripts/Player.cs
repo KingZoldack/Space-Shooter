@@ -24,16 +24,11 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject _leftEngineDamaged;
     [SerializeField] GameObject[] powerups;
 
-
     public int score = 0;
     [SerializeField] int pointsPerKill = 10;
 
-    //[SerializeField] AudioClip _laserSound;
-    [SerializeField] AudioClip _powerupSound;
-    [SerializeField] AudioClip _engineDamaged;
-    [SerializeField] AudioClip _explosionSound;
-    AudioSource _audioSource;
     AudioManager _audioManager;
+    AudioSource audioManagerAudioSource;
 
     [SerializeField]
     Animator explosionAnimation;
@@ -44,25 +39,19 @@ public class Player : MonoBehaviour
     GameObject _explosionPrefab;
 
     UIManager uiManager;
-    AudioSource audioManagerAudio;
 
     // Start is called before the first frame update
     void Start()
     {
         uiManager = FindObjectOfType<UIManager>();
-        _audioSource = GetComponent<AudioSource>();
         _audioManager = FindObjectOfType<AudioManager>();
-        //audioManagerAudio.clip = 
-         audioManagerAudio = _audioManager.GetComponent<AudioSource>();
-
-       // _audioSource.clip = _audioManager.laserSound;
-
+         audioManagerAudioSource = _audioManager.GetComponent<AudioSource>();
+        
         sapwnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManger>();
         if (sapwnManager == null)
         {
             Debug.LogError("The Spawn Manager is NULL!");
         }
-
     }
 
     // Update is called once per frame
@@ -78,18 +67,14 @@ public class Player : MonoBehaviour
         if (startTimer == true)
         {
             timer -= 1 * Time.deltaTime;
-            Debug.Log(timer);
         }
-        
     }
 
     private void FireLaser()
     {
         Vector3 laserOffset = new Vector3(0, 1.05f, 0);
         Vector3 tripleShotOffset = new Vector3(0, -1.45f, 0);
-        
         _canFire = Time.time + _fireRate;
-
         if (isTripleShotActive == true)
         {
             
@@ -102,8 +87,7 @@ public class Player : MonoBehaviour
             Instantiate(_laserPrefab, transform.position + laserOffset, Quaternion.identity);
         }
 
-       // _audioSource.Play();
-        audioManagerAudio.PlayOneShot(_audioManager.laserSound, _audioManager.laserSoundVolume);
+        audioManagerAudioSource.PlayOneShot(_audioManager.laserSound, _audioManager.laserSoundVolume);
     }
 
     void CalculateMovement()
@@ -147,29 +131,30 @@ public class Player : MonoBehaviour
     {
         if (isShieldActive == true)
         {
+            audioManagerAudioSource.PlayOneShot(_audioManager.shieldPowerdownSound, _audioManager.shieldPowerdownSoundVolume);
             isShieldActive = false;
             _playerShieldVisual.SetActive(false);
             return;
         }
 
-       _lives--;
+        _lives--;
         uiManager.UpdateLives(_lives);
 
         if (_lives == 2)
         {
             _rightEngineDamged.SetActive(true);
-            _audioSource.PlayOneShot(_engineDamaged);
+            audioManagerAudioSource.PlayOneShot(_audioManager.engineDamagedSound, _audioManager.engineDamagedSoundVolume);
         }
         
         else if (_lives == 1)
         {
             _leftEngineDamaged.SetActive(true);
-            _audioSource.PlayOneShot(_engineDamaged);
+            audioManagerAudioSource.PlayOneShot(_audioManager.engineDamagedSound, _audioManager.engineDamagedSoundVolume);
         }
 
         if (_lives == 0)
         {
-            _audioSource.PlayOneShot(_explosionSound);
+            audioManagerAudioSource.PlayOneShot(_audioManager.explosionSound, _audioManager.explosionSoundVoulme);
             sapwnManager.OnPlayerDeath();
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             this.gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
@@ -182,14 +167,12 @@ public class Player : MonoBehaviour
             Destroy(explode, 2f);
             uiManager.GameOver();
         }
-
-
     }
 
     public void TripleShotActive()
     {
         isTripleShotActive = true;
-        _audioSource.PlayOneShot(_powerupSound);
+        audioManagerAudioSource.PlayOneShot(_audioManager.collectedPowerupSound, _audioManager.collectedPowerupSoundVolume);
         StartCoroutine(TripleShotPowerDownRoutine());
     }
 
@@ -205,13 +188,12 @@ public class Player : MonoBehaviour
     public void SpeedBoostActive()
     {
         isSpeedBoostActive = true;
-        _audioSource.PlayOneShot(_powerupSound);
+        audioManagerAudioSource.PlayOneShot(_audioManager.collectedPowerupSound, _audioManager.collectedPowerupSoundVolume);
         StartCoroutine(SpeedBoostPowerDownRoutine());
     }
 
     IEnumerator SpeedBoostPowerDownRoutine()
     {
-
         while (isSpeedBoostActive == true)
         {
             yield return new WaitForSeconds(5);
@@ -223,14 +205,13 @@ public class Player : MonoBehaviour
     public void ShieldIsActive()
     {
         isShieldActive = true;
-        _audioSource.PlayOneShot(_powerupSound);
+        audioManagerAudioSource.PlayOneShot(_audioManager.collectedPowerupSound, _audioManager.collectedPowerupSoundVolume);
         _playerShieldVisual.SetActive(true);
-
     }
 
     public void lifeCollected()
     {
-        _audioSource.PlayOneShot(_powerupSound);
+        audioManagerAudioSource.PlayOneShot(_audioManager.collectedPowerupSound, _audioManager.collectedPowerupSoundVolume);
         _lives++;
         uiManager.UpdateLives(_lives);
         

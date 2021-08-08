@@ -15,7 +15,6 @@ public class MainMenuPlayer : MonoBehaviour
     private void Start()
     {
         StartCoroutine(ActivateShieldVisuals());
-
     }
 
     // Update is called once per frame
@@ -40,8 +39,7 @@ public class MainMenuPlayer : MonoBehaviour
         int randomActivationTime1 = Random.Range(3, 16);
         int randomActivationTime2 = Random.Range(5, 21);
         int randomActivationTime3 = Random.Range(11, 26);
-
-
+        
         for (; ;)
         {
             if (spreiteID == 0)

@@ -13,7 +13,6 @@ public class TextColors : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         _colorText = gameObject.GetComponent<TextMeshProUGUI>();
         changeColor = true;
 
@@ -22,7 +21,6 @@ public class TextColors : MonoBehaviour
         {
             StartCoroutine(ChangeColorRoutine());
         }
-
     }
 
     // Update is called once per frame
@@ -44,9 +42,5 @@ public class TextColors : MonoBehaviour
             yield return new WaitForSeconds(1);
             _colorText.color = new Color32(235, 222, 1, 255); //Yellow
         }
-
-
-
-
     }
 }

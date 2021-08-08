@@ -14,7 +14,6 @@ public class Powerup : MonoBehaviour
 
     Player player;
     
-
     // Start is called before the first frame update
     void Start()
     {
@@ -55,10 +54,8 @@ public class Powerup : MonoBehaviour
                     default:
                         break;
                 }
-
-
             }
-
+            
             Destroy(this.gameObject);
         }
     }

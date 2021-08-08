@@ -11,10 +11,6 @@ public class SpawnManger : MonoBehaviour
     Powerup _powerupID;
     bool _stopSpawning = false;
 
-    
-   
-
-
    public void StartSpawning()
     {
         _player = FindObjectOfType<Player>();

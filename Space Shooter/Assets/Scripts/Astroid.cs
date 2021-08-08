@@ -10,9 +10,9 @@ public class Astroid : MonoBehaviour
     Animator explosionAnimation;
     [SerializeField]
     GameObject _explosionPrefab;
-    [SerializeField] AudioClip _explosionSound;
 
-    AudioSource _audioSource;
+    AudioManager _audioManager;
+    AudioSource audioManagerAudioSource;
 
     SpawnManger spawnManager;
 
@@ -21,8 +21,8 @@ public class Astroid : MonoBehaviour
     {
         explosionAnimation = FindObjectOfType<Animator>();
         spawnManager = FindObjectOfType<SpawnManger>();
-        _audioSource = GetComponent<AudioSource>();
-        _audioSource.clip = _explosionSound;
+        _audioManager = FindObjectOfType<AudioManager>();
+        audioManagerAudioSource = _audioManager.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -39,12 +39,11 @@ public class Astroid : MonoBehaviour
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             Destroy(this.gameObject, 1f);
             GameObject explode = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
-            _audioSource.Play();
+            audioManagerAudioSource.PlayOneShot(_audioManager.explosionSound, _audioManager.explosionSoundVoulme);
             explode.SetActive(true);
             _rotationSpeed = 0;
             Destroy(explode, 2f);
             spawnManager.StartSpawning();
-            
         }
     }
 }

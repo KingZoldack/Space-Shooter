@@ -9,10 +9,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     Animator explosionAnimation;
 
-    [SerializeField] AudioClip _explosionSound;
-    [SerializeField] AudioClip _enemyLaserSound;
-    AudioSource audioSource;
-    
+    AudioManager _audioManager;
+    AudioSource audioManagerAudioSource;
 
     [SerializeField] float _speed = 4f;
 
@@ -24,11 +22,10 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         FireLaser();
-
+        _audioManager = FindObjectOfType<AudioManager>();
+        audioManagerAudioSource = _audioManager.GetComponent<AudioSource>();
         player = FindObjectOfType<Player>();
         explosionAnimation = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
-
     }
 
     // Update is called once per frame
@@ -36,21 +33,16 @@ public class Enemy : MonoBehaviour
     {
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
 
-
-
         if (transform.position.y <= -6.5f)
         {
             float randomXPos = Random.Range(-9.6f, 9.6f);
             transform.position = new Vector3(randomXPos, 6.35f, 0);
             FireLaser();
-            
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        audioSource.clip = _explosionSound;
-
         if (other.tag == "Player")
         {
             Player player = other.transform.GetComponent<Player>();
@@ -62,7 +54,7 @@ public class Enemy : MonoBehaviour
             explosionAnimation.SetTrigger("OnEnemyDeath");
             _speed = 0;
             Destroy(this.gameObject, 1.8f);
-            audioSource.Play();
+            audioManagerAudioSource.PlayOneShot(_audioManager.explosionSound, _audioManager.explosionSoundVoulme);
         }
 
         if (other.tag == "Laser")
@@ -74,7 +66,7 @@ public class Enemy : MonoBehaviour
             _speed = 0;
             Destroy(GetComponent<Collider2D>());
             Destroy(this.gameObject, 1.8f);
-            audioSource.Play();
+            audioManagerAudioSource.PlayOneShot(_audioManager.explosionSound, _audioManager.explosionSoundVoulme);
         }
     }
 
@@ -86,15 +78,13 @@ public class Enemy : MonoBehaviour
 
     IEnumerator FireLaserDelay()
     {
-        
-            if (Time.time > _canFire)
-            {
-                _canFire = Time.time + _fireRate;
-                Vector3 posToSpawn = new Vector3(-0.15f, -1.4f, 0);
-                yield return new WaitForSeconds(0.25f);
-                Instantiate(_enemyLaserPrefab, transform.position + posToSpawn, Quaternion.identity);
-                audioSource.PlayOneShot(_enemyLaserSound);
-            }
-        
+       if (Time.time > _canFire)
+       {
+         _canFire = Time.time + _fireRate;
+         Vector3 posToSpawn = new Vector3(-0.15f, -1.4f, 0);
+         yield return new WaitForSeconds(0.25f);
+         Instantiate(_enemyLaserPrefab, transform.position + posToSpawn, Quaternion.identity);
+         audioManagerAudioSource.PlayOneShot(_audioManager.enemyLaserSound, _audioManager.enemyLaserSoundVolume);
+       }
     }
 }

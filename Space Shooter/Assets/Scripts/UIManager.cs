@@ -15,7 +15,6 @@ public class UIManager : MonoBehaviour
 
     bool _isGameOver = false;
 
-
     Player player;
     SceneManagement sceneManagement;
     // Start is called before the first frame update
@@ -36,7 +35,6 @@ public class UIManager : MonoBehaviour
         {
             sceneManagement.NewGame();
         }
-
     }
 
     public void UpdateLives(int currentLives)
@@ -56,19 +54,16 @@ public class UIManager : MonoBehaviour
         StartCoroutine(GameOverTextFlicker());
         _restartText.enabled = true;
         _isGameOver = true;
-
     }
 
     IEnumerator GameOverTextFlicker()
     {
-
         while (true)
         {
             _gameOverText.enabled = true;
             yield return new WaitForSeconds(1);
             _gameOverText.enabled = false;
             yield return new WaitForSeconds(0.5f);
-
         }
     }
 }
