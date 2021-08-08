@@ -18,10 +18,10 @@ public class TextColors : MonoBehaviour
         _sceneManagement = FindObjectOfType<SceneManagement>();
 
         //Coroutine will start if the active scene is single player main menu
-        if (_sceneManagement.currentSceneIndex == 0)
-        {
+        //if (_sceneManagement.currentSceneIndex == 0)
+        //{
             StartCoroutine(ChangeColorRoutine());
-        }
+        //}
 
     }
 
