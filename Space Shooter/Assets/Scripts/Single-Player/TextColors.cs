@@ -15,18 +15,20 @@ public class TextColors : MonoBehaviour
     {
         _colorText = gameObject.GetComponent<TextMeshProUGUI>();
         changeColor = true;
+        _sceneManagement = FindObjectOfType<SceneManagement>();
 
         //Coroutine will start if the active scene is single player main menu
         if (_sceneManagement.currentSceneIndex == 0)
         {
             StartCoroutine(ChangeColorRoutine());
         }
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        _sceneManagement = FindObjectOfType<SceneManagement>();
+        
     }
 
     IEnumerator ChangeColorRoutine()
@@ -42,5 +44,10 @@ public class TextColors : MonoBehaviour
             yield return new WaitForSeconds(1);
             _colorText.color = new Color32(235, 222, 1, 255); //Yellow
         }
+    }
+
+    public void GetScene()
+    {
+
     }
 }

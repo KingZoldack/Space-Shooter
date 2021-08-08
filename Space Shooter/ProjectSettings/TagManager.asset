@@ -10,6 +10,8 @@ TagManager:
   - Laser
   - Background
   - Background_Inverted
+  - How_To_Play_Player
+  - Astroid
   layers:
   - Default
   - TransparentFX
