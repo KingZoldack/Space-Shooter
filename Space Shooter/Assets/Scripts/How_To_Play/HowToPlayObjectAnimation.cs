@@ -13,11 +13,7 @@ public class HowToPlayObjectAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (this.gameObject.tag == "How_To_Play_Player")
-        {
-            startMovement = true;
-           // StartCoroutine(MovingPlayer());
-        }
+        
     }
 
     // Update is called once per frame
@@ -25,22 +21,22 @@ public class HowToPlayObjectAnimation : MonoBehaviour
     {
         RotateAstroid();
 
-        if (this.gameObject.tag == "How_To_Play_Player")
-        {
+        //if (this.gameObject.tag == "How_To_Play_Player")
+        //{
  
-                transform.Translate(Vector3.right * _playerMoveSpeed * Time.deltaTime);
+        //        transform.Translate(Vector3.right * _playerMoveSpeed * Time.deltaTime);
 
 
-            if (transform.position.x >= -2.86f)
-            {
-                _playerMoveSpeed = -0.5f;
-            }
+        //    if (transform.position.x >= -2.86f)
+        //    {
+        //        _playerMoveSpeed = -0.5f;
+        //    }
 
-            else if (transform.position.x <= -5.13f)
-            {
-                _playerMoveSpeed = 0.5f;
-            }
-        }
+        //    else if (transform.position.x <= -5.13f)
+        //    {
+        //        _playerMoveSpeed = 0.5f;
+        //    }
+        //}
 
 
     }
