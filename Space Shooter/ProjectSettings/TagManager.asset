@@ -12,6 +12,11 @@ TagManager:
   - Background_Inverted
   - How_To_Play_Player
   - Astroid
+  - Warp_Text_Player
+  - Teleport_To_Right
+  - Teleport_To_Left
+  - Turn_Back_On_Left_Side
+  - Turn_Back_On_Right_Side
   layers:
   - Default
   - TransparentFX
