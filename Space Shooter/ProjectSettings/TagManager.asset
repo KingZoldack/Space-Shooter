@@ -17,6 +17,12 @@ TagManager:
   - Teleport_To_Left
   - Turn_Back_On_Left_Side
   - Turn_Back_On_Right_Side
+  - Meteor
+  - Move_Down
+  - Rotating_Player
+  - Move_Left
+  - Move_Up
+  - Move_Right
   layers:
   - Default
   - TransparentFX

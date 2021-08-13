@@ -8,7 +8,14 @@ public class HowToPlayObjectAnimation : MonoBehaviour
     float _astroidRotationSpeed = 2.5f;
     float _playerMoveSpeed = 1.5f;
 
+    [SerializeField]
+    float _backgroundMoveSpeed = 3.5f;
+
+    [SerializeField]
+    float meteorMoveSpeed = 1.0f;
+
     bool startMovement = false;
+    bool _moveRight = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,30 +30,11 @@ public class HowToPlayObjectAnimation : MonoBehaviour
 
         if (this.gameObject.tag == "Warp_Text_Player")
         {
-
+           
            transform.Translate(Vector3.up * _playerMoveSpeed * Time.deltaTime);
         }
 
-        //    if (transform.position.x >= 10.50f)
-        //    {
-        //        Vector3 warpToRight = new Vector3(-10.03f, transform.position.y, transform.position.z);
-        //        transform.position = warpToRight;
-        //    }
-
-        //    //if (transform.position.x == -7.93)
-        //    //{
-        //    //    gameObject.SetActive(false);
-        //    //}
-
-
-
-        //    //else if (transform.position.x <= -5.13f)
-        //    //{
-        //    //    _playerMoveSpeed = 0.5f;
-        //    //}
-        //}
-
-
+       // MeteorMovement();
     }
 
     public void RotateAstroid()
@@ -84,31 +72,15 @@ public class HowToPlayObjectAnimation : MonoBehaviour
             //this.gameObject.SetActive(false);
             transform.rotation = Quaternion.Euler(faceRight);
         }
+
     }
 
-
-    //IEnumerator MovingPlayer()
+    //private void MeteorMovement()
     //{
-    //    while (startMovement == true)
+    //    if (this.gameObject.tag == "Meteor")
     //    {
-    //        Vector3 leftPos = new Vector3(-5.13f, transform.position.y, transform.position.z);
-    //        Vector3 rightPos = new Vector3(-2.86f, transform.position.y, transform.position.z);
-
-    //        yield return new WaitForSeconds(0);
-    //        transform.Translate(Vector3.right * _playerMoveSpeed * Time.deltaTime);
-
-    //        if (transform.position.x >= -2.86f)
-    //        {
-    //            yield return new WaitForSeconds(0);
-    //            transform.Translate(Vector3.left * _playerMoveSpeed * Time.deltaTime);
-    //            yield return new WaitForSeconds(5);
-
-    //        }
-
-
-    //        //transform.Translate(leftPos * _playerMoveSpeed * Time.deltaTime);
-    //        //yield return new WaitForSeconds(3);
-
+    //        transform.Translate(Vector3.up * meteorMoveSpeed * Time.deltaTime);
+    //        transform.Translate(Vector3.right * meteorMoveSpeed * Time.deltaTime);
     //    }
     //}
 }
