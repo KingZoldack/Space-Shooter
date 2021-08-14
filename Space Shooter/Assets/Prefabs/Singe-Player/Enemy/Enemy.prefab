@@ -50,8 +50,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionAnimation: {fileID: 3809256869133429374, guid: de977be2e3aeb5a4d9ed5fd5c9eef4c7,
     type: 3}
-  _explosionSound: {fileID: 8300000, guid: a885c043fab7e46438bba03ba9dab6bc, type: 3}
-  _enemyLaserSound: {fileID: 8300000, guid: 593da8461e47cbd4a990c8e0d9d5df15, type: 3}
   _speed: 4
   _enemyLaserPrefab: {fileID: 6770268340315787542, guid: 10ccee8dfbdd7be48b54e416e847375a,
     type: 3}
@@ -141,7 +139,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.029096127, y: 0.0550282}
+  m_Offset: {x: 0.016936839, y: 0.3654811}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -152,7 +150,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5013423, y: 2.9188695}
+  m_Size: {x: 1.5042711, y: 2.2979636}
   m_EdgeRadius: 0
 --- !u!95 &313182654330481947
 Animator:

@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Single_Player_Main_Menu.unity
+    path: Assets/Scenes/Main_Menu.unity
     guid: 289697328c459e84abfb8d089d1446c5
   - enabled: 1
     path: Assets/Scenes/Single_Player_Mode.unity
@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/How_To_Play.unity
     guid: c14932f706654d84a862db2ff7194575
+  - enabled: 1
+    path: Assets/Scenes/Co-Op_Mode.unity
+    guid: 3e4b566bf75c11f49b1c1b38bf0f8138
   m_configObjects: {}

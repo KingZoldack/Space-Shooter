@@ -110,6 +110,8 @@ MonoBehaviour:
     type: 3}
   _lives: 3
   _fireRate: 0.2
+  isPlayerOne: 1
+  isPlayerTwo: 0
   timer: 5
   _playerShieldVisual: {fileID: 3100477666026442027}
   _rightEngineDamged: {fileID: 2794146019056603838}
@@ -121,10 +123,6 @@ MonoBehaviour:
   - {fileID: 7017819579714821163, guid: 2e7e0cb956c2c7f4f901ccfc186a8856, type: 3}
   score: 0
   pointsPerKill: 10
-  _laserSound: {fileID: 8300000, guid: 75676f361bdfeaf41a46623e95df3dbc, type: 3}
-  _powerupSound: {fileID: 8300000, guid: 5ee343246919d2b4bba63ae629e95494, type: 3}
-  _engineDamaged: {fileID: 8300000, guid: 56990ff23357f2f409d3be37702d6f6d, type: 3}
-  _explosionSound: {fileID: 8300000, guid: a885c043fab7e46438bba03ba9dab6bc, type: 3}
   explosionAnimation: {fileID: 0}
   _playerTurn: {fileID: 772438012}
   _explosionPrefab: {fileID: 7238112377634529190, guid: de977be2e3aeb5a4d9ed5fd5c9eef4c7,
@@ -142,7 +140,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.020543575, y: 0.010271549}
+  m_Offset: {x: 0.020543456, y: -0.28725445}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -153,7 +151,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.2300086, y: 4.154461}
+  m_Size: {x: 1.8018835, y: 3.559409}
   m_EdgeRadius: 0
 --- !u!82 &378883992
 AudioSource:
@@ -261,7 +259,7 @@ Animator:
   m_GameObject: {fileID: 1074537509178967452}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1b630ff863affa7438417ae110ccad17, type: 2}
+  m_Controller: {fileID: 9100000, guid: 751fbbd837f16e341992104ea1e9df57, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

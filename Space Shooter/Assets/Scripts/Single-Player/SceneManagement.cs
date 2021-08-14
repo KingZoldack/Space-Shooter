@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour
 {
+    UIManager _uiManager;
+
     public int currentSceneIndex;
 
     // Start is called before the first frame update
     void Start()
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-
+        _uiManager = FindObjectOfType<UIManager>();
     }
 
     // Update is called once per frame
@@ -27,13 +29,31 @@ public class SceneManagement : MonoBehaviour
     {
         if (Input.GetKeyDown("r"))
         {
-            SceneManager.LoadScene("Single_Player_Mode");
+            if (_uiManager.isCoOpMode == false)
+            {
+                SceneManager.LoadScene("Single_Player_Mode");
+            }
+
+            else if (_uiManager.isCoOpMode == true)
+            {
+                SceneManager.LoadScene("Co-Op_Mode");
+            }
+        }
+
+        else if (Input.GetKeyDown("escape"))
+        {
+            SceneManager.LoadScene(0);
         }
     }
 
-    public void LoadGameScene()
+    public void LoadSinglePlayerScene()
     {
         SceneManager.LoadScene("Single_Player_Mode");
+    }
+
+    public void LoadMultiplayerPlayerScene()
+    {
+        SceneManager.LoadScene("Co-Op_Mode");
     }
 
     public void LoadNextScene()

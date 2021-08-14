@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Sprite[] _livesSprites;
 
     bool _isGameOver = false;
+    public bool isCoOpMode = false;
 
     Player player;
     SceneManagement sceneManagement;

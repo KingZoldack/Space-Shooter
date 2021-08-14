@@ -13,6 +13,10 @@ public class Player : MonoBehaviour
     [SerializeField] float _fireRate = 0.5f;
     float _canFire = -1f;
 
+    public bool isPlayerOne = false;
+    public bool isPlayerTwo = false;
+
+
     bool isTripleShotActive = false;
     bool isSpeedBoostActive = false;
     bool isShieldActive = false;
@@ -57,17 +61,36 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CalculateMovement();
-
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
+        if (isPlayerOne == true)
         {
-            FireLaser();
+            CalculatePlayerOneMovement();
+
+            if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
+            {
+                FireLaser();
+            }
+
+            if (startTimer == true)
+            {
+                timer -= 1 * Time.deltaTime;
+            }
         }
 
-        if (startTimer == true)
+        else if (isPlayerTwo == true)
         {
-            timer -= 1 * Time.deltaTime;
+            CalculatePlayerTwoMovement();
+
+            if (Input.GetKeyDown(KeyCode.RightControl) && Time.time > _canFire)
+            {
+                FireLaser();
+            }
+
+            if (startTimer == true)
+            {
+                timer -= 1 * Time.deltaTime;
+            }
         }
+        
     }
 
     private void FireLaser()
@@ -90,17 +113,17 @@ public class Player : MonoBehaviour
         audioManagerAudioSource.PlayOneShot(_audioManager.laserSound, _audioManager.laserSoundVolume);
     }
 
-    void CalculateMovement()
+    void CalculatePlayerOneMovement()
     {
         if (isSpeedBoostActive == false)
         {
-            MoveLeftAndRight();
+            MovePlayerOneLeftAndRight();
         }
 
         else if (isSpeedBoostActive == true)
         {
             _speed = _speedBoostValue;
-            MoveLeftAndRight();
+            MovePlayerOneLeftAndRight();
         }
 
         //Clamps the movement on the y axis.
@@ -117,7 +140,34 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void MoveLeftAndRight()
+    void CalculatePlayerTwoMovement()
+    {
+        if (isSpeedBoostActive == false)
+        {
+            MovePlayerTwoLeftAndRight();
+        }
+
+        else if (isSpeedBoostActive == true)
+        {
+            _speed = _speedBoostValue;
+            MovePlayerTwoLeftAndRight();
+        }
+
+        //Clamps the movement on the y axis.
+        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -4.6f, 0), 0);
+
+        if (transform.position.x >= 10.3f)
+        {
+            transform.position = new Vector3(-10.3f, transform.position.y, 0);
+        }
+
+        else if (transform.position.x <= -10.3f)
+        {
+            transform.position = new Vector3(10.3f, transform.position.y, 0);
+        }
+    }
+
+    public void MovePlayerOneLeftAndRight()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -125,6 +175,35 @@ public class Player : MonoBehaviour
         Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
         transform.Translate(direction * _speed * Time.deltaTime);
         _playerTurn.SetFloat("moveSpeed", direction.x);
+    }
+
+    public void MovePlayerTwoLeftAndRight()
+    {
+        _playerTurn.SetBool("isLeft", false);
+        _playerTurn.SetBool("isRight", false);
+
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            transform.Translate(Vector3.up * _speed * Time.deltaTime);
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            transform.Translate(Vector3.down * _speed * Time.deltaTime);
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Translate(Vector3.left * _speed * Time.deltaTime);
+            _playerTurn.SetBool("isLeft", true);
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Translate(Vector3.right * _speed * Time.deltaTime);
+            _playerTurn.SetBool("isRight", true);
+        }
+        //_playerTurn.SetFloat("moveSpeed", direction.x);
     }
 
     public void Damage()
@@ -180,7 +259,7 @@ public class Player : MonoBehaviour
     {
         while (isTripleShotActive == true)
         {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(10);
             isTripleShotActive = false;
         }
     }
@@ -196,7 +275,7 @@ public class Player : MonoBehaviour
     {
         while (isSpeedBoostActive == true)
         {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(10);
             isSpeedBoostActive = false;
             _speed = 5f;
         }
