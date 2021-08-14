@@ -123,6 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!95 &132698929 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5486562747193260912, guid: cddb9bb4eed11ac419902ac82ced3dad,
+    type: 3}
+  m_PrefabInstance: {fileID: 112871336599842787}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,6 +478,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 318486616, guid: cddb9bb4eed11ac419902ac82ced3dad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4982156659457350022}
+    - target: {fileID: 794913396, guid: cddb9bb4eed11ac419902ac82ced3dad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4982156659457350022}
     - target: {fileID: 112871335929541339, guid: cddb9bb4eed11ac419902ac82ced3dad,
         type: 3}
       propertyPath: m_Name
@@ -665,6 +679,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4982156658181544570, guid: 5beb5e64e2e78f345a493c8d67439028,
+        type: 3}
+      propertyPath: _pauseMenuAnimator
+      value: 
+      objectReference: {fileID: 132698929}
     - target: {fileID: 4982156658181544571, guid: 5beb5e64e2e78f345a493c8d67439028,
         type: 3}
       propertyPath: m_Name
@@ -727,6 +746,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5beb5e64e2e78f345a493c8d67439028, type: 3}
+--- !u!114 &4982156659457350022 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4982156658181544570, guid: 5beb5e64e2e78f345a493c8d67439028,
+    type: 3}
+  m_PrefabInstance: {fileID: 4982156659457350021}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca3ea0117bb6e9349940d2d39884e138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5926144719962344417
 PrefabInstance:
   m_ObjectHideFlags: 0

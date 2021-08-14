@@ -7,13 +7,19 @@ public class SceneManagement : MonoBehaviour
 {
     UIManager _uiManager;
 
+    [SerializeField]
+    Animator _pauseMenuAnimator;
+
     public int currentSceneIndex;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         _uiManager = FindObjectOfType<UIManager>();
+        _pauseMenuAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
     }
 
     // Update is called once per frame
@@ -23,6 +29,13 @@ public class SceneManagement : MonoBehaviour
         {
             Application.Quit();
         }
+
+        if (Input.GetKey(KeyCode.P))
+        {
+            PauseGame();
+        }
+
+       
     }
 
     public void NewGame()
@@ -61,13 +74,29 @@ public class SceneManagement : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex + 1);
     }
 
-    public void LoadSPMainMenu()
+    public void LoadMainMenuFromPause()
     {
         SceneManager.LoadScene(0);
+        ResumeGame();
     }
 
     public void LoadSinglePlayerHelp()
     {
         SceneManager.LoadScene(2);
+    }
+
+    public void PauseGame()
+    {
+        _uiManager.pauseMenuPanel.SetActive(true);
+        _pauseMenuAnimator.SetBool("isPaused", true);
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        
+            Time.timeScale = 1;
+            _uiManager.pauseMenuPanel.SetActive(false);
+        
     }
 }

@@ -7,11 +7,14 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI Scoretext;
+    [SerializeField] public TextMeshProUGUI bestScoretext;
     [SerializeField] TextMeshProUGUI _gameOverText;
     [SerializeField] TextMeshProUGUI _restartText;
 
     [SerializeField] Image _livesImage;
     [SerializeField] Sprite[] _livesSprites;
+
+    [SerializeField] public GameObject pauseMenuPanel;
 
     bool _isGameOver = false;
     public bool isCoOpMode = false;
@@ -30,7 +33,9 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bestScoretext.text = "Best Score: " + player.bestScore;
         Scoretext.text = "Score: " + player.score;
+        
         
         if (_isGameOver == true)
         {
@@ -67,5 +72,7 @@ public class UIManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
     }
+
+    
 }
         

@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject[] powerups;
 
     public int score = 0;
+    public int bestScore;
     [SerializeField] int pointsPerKill = 10;
 
     AudioManager _audioManager;
@@ -56,6 +57,9 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("The Spawn Manager is NULL!");
         }
+
+        bestScore = PlayerPrefs.GetInt("HighScore", 0);
+        uiManager.bestScoretext.text = "Best Score: " + bestScore;
     }
 
     // Update is called once per frame
@@ -203,7 +207,6 @@ public class Player : MonoBehaviour
             transform.Translate(Vector3.right * _speed * Time.deltaTime);
             _playerTurn.SetBool("isRight", true);
         }
-        //_playerTurn.SetFloat("moveSpeed", direction.x);
     }
 
     public void Damage()
@@ -245,6 +248,7 @@ public class Player : MonoBehaviour
             _speed = 0f;
             Destroy(explode, 2f);
             uiManager.GameOver();
+            BestScoreCheck();
         }
     }
 
@@ -308,6 +312,16 @@ public class Player : MonoBehaviour
     public void AddToScore()
     {
         score += pointsPerKill;
+    }
+
+    public void BestScoreCheck()
+    {
+        if (score > bestScore)
+        {
+            bestScore = score;
+            PlayerPrefs.SetInt("HighScore", bestScore);
+            //uiManager.bestScoretext.text = "Best Score: " + bestScore;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
